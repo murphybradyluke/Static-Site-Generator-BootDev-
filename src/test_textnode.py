@@ -65,9 +65,10 @@ class TestTextNode(unittest.TestCase):
         html_node = text_node_to_html_node(node)
         self.assertEqual(html_node.to_html(), '<img src="http://www.google.com" alt="This is an image node"></img>')
 
-    def text_unknown_text_type(self):
-        node = TextNode("This is an unknown node", TextType.UNKNOWN)
-        self.assertRaisesRegex(ValueError, f"Unknown text type: {node.text_type}")
+    def test_unknown_text_type(self):
+        node = TextNode("This is an unknown node", "not-a-text-type")
+        with self.assertRaisesRegex(ValueError, "Unknown text type"):
+            text_node_to_html_node(node)
 
     def test_not_eq_different_type(self):
         node = TextNode("This is a text node", TextType.BOLD)

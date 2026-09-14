@@ -1,6 +1,7 @@
 import unittest
+
 from textnode import TextNode, TextType, text_node_to_html_node
-from htmlnode import LeafNode
+
 
 
 class TestTextNode(unittest.TestCase):
@@ -67,7 +68,6 @@ class TestTextNode(unittest.TestCase):
 
     def text_unknown_text_type(self):
         node = TextNode("This is an unknown node", TextType.UNKNOWN)
-        html_node = text_node_to_html_node(node)
         self.assertRaisesRegex(ValueError, f"Unknown text type: {node.text_type}")
 
     def test_not_eq_different_type(self):

@@ -40,15 +40,33 @@ class TestHTMLNode(unittest.TestCase):
         parent_node = ParentNode("div", [child_node])
         self.assertEqual(parent_node.to_html(), "<div><span>child</span></div>")
 
-
     def test_to_html_with_grandchildren(self):
         grandchild_node = LeafNode("b", "grandchild")
         child_node = ParentNode("span", [grandchild_node])
         parent_node = ParentNode("div", [child_node])
         self.assertEqual(
             parent_node.to_html(),
-            "<div><span><b>grandchild</b></span></div>",
-    )
+            "<div><span><b>grandchild</b></span></div>")
+
+    def test_to_html_not_implemented(self):
+        node = HTMLNode(None, "Hello, world!")
+        with self.assertRaises(NotImplementedError):
+            node.to_html()
+
+    def test_leafnode_to_html_value_error(self):
+        node = LeafNode("a", None, {"href": "https://www.google.com"})
+        with self.assertRaisesRegex(ValueError, "Value is None"):
+            node.to_html()
+
+    def test_parentnode_to_html_no_tag(self):
+        node = ParentNode(None, [LeafNode("p", "Hello, world!")])
+        with self.assertRaisesRegex(ValueError, "Tag missing"):
+            node.to_html()
+
+    def test_parentnode_to_html_no_children(self):
+        node = ParentNode("b", None)
+        with self.assertRaisesRegex(ValueError, "Children missing"):
+            node.to_html()
 
 if __name__ == "__main__":
     unittest.main()

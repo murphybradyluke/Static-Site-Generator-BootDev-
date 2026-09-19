@@ -20,5 +20,3 @@ def split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type: 
                 if index % 2 != 0:
                     new_list.append(TextNode(value, text_type))
     return new_list
-
-print (split_nodes_delimiter([TextNode("This is text with a `code block` word", TextType.TEXT)], "`", TextType.CODE))

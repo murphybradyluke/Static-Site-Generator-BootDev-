@@ -57,3 +57,6 @@ class TestSplitDelim(unittest.TestCase):
         node = TextNode("This **test** has an **unmatched delimiter", TextType.TEXT)
         with self.assertRaisesRegex(Exception, "Missing delimiter"):
             split_nodes_delimiter([node], "**", TextType.BOLD)
+
+if __name__ == "__main__":
+    unittest.main()

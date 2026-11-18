@@ -27,7 +27,7 @@ def copy_directory_contents(src_path: str, dst_path: str):
 if sys.argv[0] == "":
     basepath = "/"
 else:
-    basepath = sys.argv
+    basepath = sys.argv[1]
 
 def main():
     delete_public()

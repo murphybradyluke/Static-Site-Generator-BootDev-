@@ -24,10 +24,10 @@ def copy_directory_contents(src_path: str, dst_path: str):
                 print(f"created directory: '{new_dst}'")
             copy_directory_contents(joined_src, new_dst)
 
-if sys.argv[0] == "":
-    basepath = "/"
-else:
+if len(sys.argv) >= 2
     basepath = sys.argv[1]
+else:
+    basepath = "/"
 
 def main():
     delete_public()

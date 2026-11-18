@@ -21,8 +21,7 @@ def generate_page(from_path, template_path, dest_path, basepath):
     title = extract_title(from_path_content)
     new_title = template_path_content.replace("{{ Title }}", title)
     new_content = new_title.replace("{{ Content }}", html_string)
-    new_content.replace('href="/', f'href="{basepath}')
-    new_content.replace('src="/', f'src="{basepath}')
+
     dirname = os.path.dirname(dest_path)
     os.makedirs(dirname, exist_ok=True)
     with open(dest_path, 'w', encoding='utf-8') as f:
@@ -42,6 +41,8 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, bas
             title = extract_title(from_path_content)
             new_title = template_path_content.replace("{{ Title }}", title)
             new_content = new_title.replace("{{ Content }}", html_string)
+            new_content.replace('href="/', f'href="{basepath}')
+            new_content.replace('src="/', f'src="{basepath}')
             dirname = os.path.dirname(dest_dir_path)
             os.makedirs(dirname, exist_ok=True)
             to_rename = os.path.join(dest_dir_path, item)

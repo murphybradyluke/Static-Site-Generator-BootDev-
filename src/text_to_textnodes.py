@@ -1,5 +1,5 @@
-from src.textnode import TextNode, TextType
-from src.splitnodes import split_nodes_delimiter, split_nodes_image, split_nodes_link
+from textnode import TextNode, TextType
+from splitnodes import split_nodes_delimiter, split_nodes_image, split_nodes_link
 
 
 def text_to_textnodes(text):

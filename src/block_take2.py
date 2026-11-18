@@ -1,8 +1,8 @@
 
-from src.blocks import markdown_to_blocks, block_to_block_type, BlockType
-from src.text_to_textnodes import text_to_textnodes
-from src.textnode import text_node_to_html_node, TextNode, TextType
-from src.htmlnode import ParentNode
+from blocks import markdown_to_blocks, block_to_block_type, BlockType
+from text_to_textnodes import text_to_textnodes
+from textnode import text_node_to_html_node, TextNode, TextType
+from htmlnode import ParentNode
 
 def blockquote_to_string(block):
     lines = block.split("\n")

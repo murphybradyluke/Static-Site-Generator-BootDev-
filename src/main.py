@@ -1,9 +1,33 @@
-from htmlnode import HTMLNode
-from textnode import TextNode, TextType
+import os
+import shutil
+from generate import generate_pages_recursive
 
+PATH = "public"
+
+def delete_public():
+    if os.path.exists(PATH):
+        print(f"deleting {PATH}")
+        shutil.rmtree(PATH)
+
+def copy_directory_contents(src_path: str, dst_path: str):
+    src = os.listdir(src_path)
+    for item in src:
+        joined_src = os.path.join(src_path, item)
+        if os.path.isfile(joined_src):
+            shutil.copy(joined_src, dst_path)
+            print(f"copied {item} to {dst_path}")
+        else:
+            new_dst = os.path.join(dst_path, item)
+            if not os.path.exists(new_dst):
+                os.mkdir(new_dst)
+                print(f"created directory: '{new_dst}'")
+            copy_directory_contents(joined_src, new_dst)
 
 def main():
-    #node = TextNode("This is some anchor text", TextType.LINK, "https://boot.dev")
-    #node2 = HTMLNode("h1", "This is some anchor text", "children list", {"href": "https://www.google.com", "target": "_blank"})
-    #print(node)
-    #print(HTMLNode.props_to_html(node2))
+    delete_public()
+    os.mkdir("public")
+    copy_directory_contents("static", "public")
+    generate_pages_recursive("content/", "template.html", "public/")
+
+if __name__ == "__main__":
+    main()

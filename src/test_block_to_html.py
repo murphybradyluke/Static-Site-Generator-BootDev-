@@ -1,6 +1,6 @@
 import unittest
 
-from src.block_take2 import markdown_to_html_node
+from block_take2 import markdown_to_html_node
 
 class TestBlockToHTML(unittest.TestCase):
     def test_paragraphs(self):

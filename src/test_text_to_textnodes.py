@@ -1,9 +1,9 @@
 import unittest
 
 
-from src.text_to_textnodes import text_to_textnodes
-from src.textnode import TextNode, TextType
-from src.splitnodes import split_nodes_delimiter, split_nodes_image, split_nodes_link
+from text_to_textnodes import text_to_textnodes
+from textnode import TextNode, TextType
+from splitnodes import split_nodes_delimiter, split_nodes_image, split_nodes_link
 
 class TestTextToTextNodes(unittest.TestCase):
     def test_text_to_textnodes(self):

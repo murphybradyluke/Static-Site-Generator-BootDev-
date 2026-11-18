@@ -1,8 +1,8 @@
-from src.blocks import markdown_to_blocks, BlockType, block_to_block_type
-from src.textnode import TextNode, TextType, text_node_to_html_node
-from src.text_to_textnodes import text_to_textnodes
-from src.htmlnode import ParentNode
-from src.splitnodes import split_nodes_delimiter
+from blocks import markdown_to_blocks, BlockType, block_to_block_type
+from textnode import TextNode, TextType, text_node_to_html_node
+from text_to_textnodes import text_to_textnodes
+from htmlnode import ParentNode
+from splitnodes import split_nodes_delimiter
 
 
 def markdown_to_html_node(markdown):

@@ -25,7 +25,7 @@ def copy_directory_contents(src_path: str, dst_path: str):
             copy_directory_contents(joined_src, new_dst)
 
 if len(sys.argv) >= 2:
-    basepath = sys.argv[1]
+    basepath = f"{sys.argv[1]}/"
 else:
     basepath = "/"
 

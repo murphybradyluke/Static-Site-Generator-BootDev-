@@ -24,7 +24,7 @@ def copy_directory_contents(src_path: str, dst_path: str):
                 print(f"created directory: '{new_dst}'")
             copy_directory_contents(joined_src, new_dst)
 
-if sys.argv == "":
+if sys.argv[0] == "":
     basepath = "/"
 else:
     basepath = sys.argv

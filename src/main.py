@@ -1,8 +1,9 @@
 import os
 import shutil
+import sys
 from generate import generate_pages_recursive
 
-PATH = "public"
+PATH = "docs"
 
 def delete_public():
     if os.path.exists(PATH):
@@ -23,11 +24,16 @@ def copy_directory_contents(src_path: str, dst_path: str):
                 print(f"created directory: '{new_dst}'")
             copy_directory_contents(joined_src, new_dst)
 
+if sys.argv == "":
+    basepath = "/"
+else:
+    basepath = sys.argv
+
 def main():
     delete_public()
-    os.mkdir("public")
-    copy_directory_contents("static", "public")
-    generate_pages_recursive("content/", "template.html", "public/")
+    os.mkdir("docs")
+    copy_directory_contents("static", "docs")
+    generate_pages_recursive("content/", "template.html", "docs/", basepath)
 
 if __name__ == "__main__":
     main()
